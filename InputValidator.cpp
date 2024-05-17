@@ -19,7 +19,7 @@ public:
             return false;
         }
 
-        return (n > 0 && n < avoid);  //do something about this magic no
+        return (n > 0 && n < avoid);
     }
 
     vector<int> InputArray(string& nums, int avoid) {

@@ -8,7 +8,7 @@ void Help() {
     cout << "This is the help section\nHere we will do everything except helping you\n";
 }
 
-void GoCases(int choice) {
+void GoCase(int choice) {
     switch(choice) {
         case 1: CPUScheduling scheduler;
             scheduler.execute();
@@ -24,15 +24,13 @@ void GoCases(int choice) {
     }
 }
 
-vector<int> PrintMenu() {
+int PrintMenu() {
     string choice;
     InputValidator obj;
 
     cout << "\n1. CPU Scheduling\t\t2. Disk Scheduling\t\t3. Page Replacement\n";
     cout << "4. Bankers Algorithm\t\t5. Memory Allocation\t\t6. Exit\n";
 
-    vector<int> Array;
-    int n;
     do {
         cout << "\nEnter a choice no: ";
         getline(cin, choice);
@@ -42,14 +40,14 @@ vector<int> PrintMenu() {
         }
         if (stoi(choice) == 6)
             return {6};
-        Array = obj.InputArray(choice, 6);
+         
         
-        if(Array.empty())
+        if(!obj.CheckValid(choice, 6))
             cout << "Please enter a valid no! type \"help\"\n";
 
-    } while (Array.empty());
+    } while (!obj.CheckValid(choice, 6));
 
-    return Array;
+    return stoi(choice);
 }
 
 void PrintTitle() {
@@ -65,11 +63,9 @@ int main() {
     PrintTitle();
 
     while (true) {
-        vector<int> choices = PrintMenu();
-        if (choices[0] == 6) return 0;
-        for (auto choice: choices) {
-            GoCases(choice);
-        }
+        int choice = PrintMenu();
+        if (choice == 6) return 0;
+        GoCase(choice);
     }
     cout << "\nThank-You";
 
