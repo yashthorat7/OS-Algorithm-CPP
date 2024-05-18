@@ -17,7 +17,8 @@ class CPUScheduling {
         int CT, TAT, WT;
         bool used;
 
-        table(int _PR = 0, bool _used = false) : PR(_PR), used(_used) {}
+        table(int _num = 0, int _AT = 0, int _BT = 0, int _PR = 0, bool _used = false)
+            : num(_num), AT(_AT), BT(_BT), PR(_PR), CT(0), TAT(0), WT(0), used(_used) {}
     };
 
 private:
@@ -25,7 +26,7 @@ private:
         cout << "Hi";
     }
 
-    bool TakeInput(vector<int>& choices) {
+    bool TakeInput(vector<int>& choices, vector<table>& Process) {
         int n = choices.size();
         if (n == 1)
             return false;
@@ -41,7 +42,6 @@ private:
         cout << "Enter the number of Processes: ";
         cin >> n;
 
-        vector<table> Process;
         cout << "\nEnter the Process nos - Arrival Times - Burst Times";
         if (hasPriority)
             cout << " - Priority(low > high) {Eg: 1 4 11 2}\n";
@@ -57,15 +57,15 @@ private:
             Process.push_back(process);
         }
         
-        
         return true;
     }
 
-
-    void GoCases(int choice) {
+    void GoCases(int choice, vector<table>& Process) {
+        int n = Process.size();
         switch(choice) {
             case 1: FCFS fcfs;
-                    fcfs.execute();
+                    if (n < 1) fcfs.execute();
+                    //else fcfs.ConcurrentExecute(Process);
                     break;
             case 2: cout << "case 2"; break;
             case 3: cout << "case 3"; break;
@@ -109,10 +109,13 @@ private:
 
 public:
     void execute() {
+        vector<table> Process;
         vector<int> choices = PrintMenu();
-        if (!TakeInput(choices)) {
+        if (!TakeInput(choices, Process)) {
+            GoCases(choices[0], Process);
+        } else {
             for (auto choice: choices) {
-                GoCases(choice);
+                GoCases(choice, Process);
             }
         }
     }
