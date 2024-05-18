@@ -1,25 +1,15 @@
 #include <iostream>
 #include <string>
-#include "CPUScheduling.cpp"
+#include <vector>
+
+#include "cpu_scheduling.h"
+#include "HelpManager.h"
+#include "input_validator.h"
 
 using namespace std;
 
+
 class MainMenu {
-public:
-    void Run() {
-        DisplayTitle();
-
-        while (true) {
-            DisplayMenu();
-            int choice = GetMenuChoice();
-            if (choice == 6) {
-                cout << "\nThank you!" << endl;
-                break;
-            }
-            HandleChoice(choice);
-        }
-    }
-
 private:
     void DisplayTitle() const {
         cout << "   ___  ____       _    _     ____  ___  ____  ___ _____ _   _ __  __ ____   \n"
@@ -52,9 +42,6 @@ private:
             case 5:
                 cout << "Memory Allocation Algorithms" << endl;
                 break;
-            default:
-                cout << "Invalid choice" << endl;
-                break;
         }
     }
 
@@ -63,8 +50,9 @@ private:
         cout << "4. Bankers Algorithm\t\t5. Memory Allocation\t\t6. Exit\n";
     }
 
-    int GetMenuChoice() const {
+    vector<int> GetMenuChoice() const {
         string choice;
+        vector<int> choices;
         InputValidator validator;
 
         while (true) {
@@ -73,17 +61,29 @@ private:
             if (choice == "help") {
                 DisplayHelp();
                 continue;
-            }
-
-            if (validator.CheckValid(choice, 6)) {
-                int choiceInt = stoi(choice);
-                if (choiceInt == 6) {
-                    return choiceInt;
-                }
-                return choiceInt;
             } else {
+                choices = validator.InputArray(choice);
+            }
+            if (choices.empty()) {
                 cout << "Please enter a valid number! Type \"help\" for assistance.\n";
             }
+        }
+        return choices;
+    }
+
+public:
+    inline void Run() {
+        DisplayTitle();
+
+        while (true) {
+            DisplayMenu();
+            vector<int> choice = GetMenuChoice();
+            if (choice[0] == 6) {
+                cout << "\nThank you!" << endl;
+                break;
+            }
+            for (auto choiceInt: choice)
+                HandleChoice(choiceInt);
         }
     }
 };

@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "InputValidator.cpp"
+#include "input_validator.h"
 #include "FCFS.cpp"
 #include "SJF_NP.cpp"
 #include "SJF_P.cpp"
@@ -97,7 +97,7 @@ private:
             }
             if (stoi(choice) == 8)
                 return {8};
-            Choices = obj.InputArray(choice, 7);
+            Choices = obj.InputArray(choice);
             
             if(Choices.empty())
                 cout << "Please enter a valid no! type \"help\"\n";
