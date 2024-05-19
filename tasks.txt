@@ -1,0 +1,45 @@
+main.cpp / exe
+    Title
+    Menu
+        1.CPU Scheduling     2.Disk Scheduling      3.Page Replacement
+        4.Bankers Algorithm  5.Memory Allocation    6.Exit
+    add an help feature which will redirect to an help_manager.h
+    add an input_validator.h which takes input and convert it into vector<int>
+    switch case
+
+
+input_validator.h / cpp
+    input validator(must take limits)
+    input to array converter(must take limits)
+        splits an string in the array
+        checks each element then put it in the array
+        if notvalid then, return an empty array
+
+
+cpu_scheduler.h / cpp
+    Menu
+        1.FCFS      2.SJF NP    3.SJF P     4.PR NP
+        5.PR P      6.RR        7.MLQ       8.Back
+    add an input_vaildator.h
+    add an help feature which will redirect to an help_manager.h
+    add an input_validator.h which takes input and convert it into vector<int>
+    switch case
+
+
+process_manager.h / cpp
+    create a process class
+    classes will have AT, BT, PR, QL, CT, TAT, WT;
+    set(nos)
+    get(values);
+
+
+help_manager.h / cpp
+    switch cases
+        help for each section
+
+
+fcfs.h / cpp
+    Title
+    GanttChart
+    PrintTable
+    Calculate Averages

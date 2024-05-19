@@ -2,8 +2,7 @@
 #include <string>
 #include <vector>
 
-#include "cpu_scheduling.h"
-#include "HelpManager.h"
+#include "cpu_scheduling.cpp"
 #include "input_validator.h"
 
 using namespace std;
@@ -20,15 +19,11 @@ private:
             "                                                           Yash Thorat | C++\n";
     }
 
-    void DisplayHelp() const {
-        cout << "This is the help section\nHere we will do everything except helping you\n";
-    }
-
     void HandleChoice(int choice) const {
         switch (choice) {
             case 1:
                 CPUScheduling scheduler;
-                scheduler.execute();
+                scheduler.Run();
                 break;
             case 2:
                 cout << "Disk Scheduling" << endl;
@@ -59,7 +54,7 @@ private:
             cout << "\nEnter a choice number: ";
             getline(cin, choice);
             if (choice == "help") {
-                DisplayHelp();
+                cout << "hello"; //add help here
                 continue;
             } else {
                 choices = validator.InputArray(choice);
@@ -82,8 +77,9 @@ public:
                 cout << "\nThank you!" << endl;
                 break;
             }
-            for (auto choiceInt: choice)
+            for (auto choiceInt: choice) {
                 HandleChoice(choiceInt);
+            }
         }
     }
 };
