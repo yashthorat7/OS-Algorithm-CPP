@@ -122,9 +122,3 @@ public:
         }
     }
 };
-
-int main() {
-    CPUScheduling schedulingApp;
-    schedulingApp.Run();
-    return 0;
-}
