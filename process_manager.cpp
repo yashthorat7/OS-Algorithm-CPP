@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -9,8 +10,23 @@ private:
     int CT, TAT, WT;
     bool isUsed = false;
 
+    vector<int> SetProcesses() {
+        int n;
+        cout << "Enter the no of Processes: ";
+        cin >> n;
+
+        cout << "\nEnter the Process nos - Arrival Times - Burst Times\t{Eg ::4 5 18}" << endl;
+        for (int i = 0; i < n; i++) {
+            cout << ":: ";
+            cin >> ID >> AT >> BT;;
+        }
+        
+        return {ID, AT, BT, PR, QL};
+    }
+
 public:
-    void Run() {
-        cout << "Add a Process";
+    vector<int> Run(int choice) {
+        
+        return SetProcesses();
     }
 };
