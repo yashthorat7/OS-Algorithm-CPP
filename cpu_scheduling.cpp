@@ -18,38 +18,6 @@ private:
         return false;
     }
 
-    void CollectProcessDetails(int n, bool hasPriority, vector<int>& processList) const {
-        cout << "\nEnter the Process numbers - Arrival Times - Burst Times";
-        if (hasPriority)
-            cout << " - Priority (low > high) {Eg: 1 4 11 2}\n";
-        else 
-            cout << " {Eg: 4 1 2}\n";
-
-        for (int i = 0; i < n; i++) {
-            int process;
-            cout << ":: ";
-            //cin >> process.num >> process.AT >> process.BT;
-            //if (hasPriority)
-            //    cin >> process.PR;
-            processList.push_back(process);
-        }
-    }
-
-    bool CollectProcess(const vector<int>& choices, vector<int>& processList) {
-        int n = choices.size();
-        if (n == 1)
-            return false;
-
-        bool hasPriority = HasPriority(choices);
-
-        cout << "Enter the number of Processes: ";
-        cin >> n;
-
-        CollectProcessDetails(n, hasPriority, processList);
-        
-        return true;
-    }
-
     void HandleChoice(int choice, vector<int>& processList) {
         int n = processList.size();
         switch (choice) {
@@ -115,8 +83,6 @@ public:
         DisplayMenu();
         vector<int> processList;
         vector<int> choices = GetMenuChoices();
-
-        CollectProcess(choices, processList);
         for (auto choice: choices) {
             HandleChoice(choice, processList);
         }
