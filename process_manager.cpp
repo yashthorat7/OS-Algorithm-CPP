@@ -20,8 +20,14 @@ private:
         return {ID, AT, BT, PR, QL};
     }
 
-    vector<int> SetProcesses() {
-        return {};
+    vector<int> SetProcessesPri(int n) {
+        cout << "\nEnter the Process nos - Arrival Times - Burst Times - Priority (less >> more)\t{Eg ::4 5 18 2}" << endl;
+        for (int i = 0; i < n; i++) {
+            cout << ":: ";
+            cin >> ID >> AT >> BT >> PR;
+        }
+        
+        return {ID, AT, BT, PR, QL};       
     }
 
 public:
