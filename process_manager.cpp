@@ -30,6 +30,22 @@ private:
         return {ID, AT, BT, PR, QL};       
     }
 
+    vector<int> SetProcessesQL(int n) {
+        int levels;
+        cout << "Enter the no of Levels: ";
+        cin >> levels;
+        // work on the vectored algorithms and then return them
+        // see if it has priority. if yes..we have to ask for priority as well
+
+        cout << "\nEnter the Process nos - Arrival Times - Burst Times - Level\t{Eg ::4 5 18 2}" << endl;
+        for (int i = 0; i < n; i++) {
+            cout << ":: ";
+            cin >> ID >> AT >> BT >> QL;
+        }
+        
+        return {ID, AT, BT, PR, QL};       
+    }
+
 public:
     vector<int> Run(int choice) {
         int n;
