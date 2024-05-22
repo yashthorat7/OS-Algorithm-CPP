@@ -10,23 +10,24 @@ private:
     int CT, TAT, WT;
     bool isUsed = false;
 
-    vector<int> SetProcesses() {
-        int n;
-        cout << "Enter the no of Processes: ";
-        cin >> n;
-
+    vector<int> SetProcesses(int n) {
         cout << "\nEnter the Process nos - Arrival Times - Burst Times\t{Eg ::4 5 18}" << endl;
         for (int i = 0; i < n; i++) {
             cout << ":: ";
-            cin >> ID >> AT >> BT;;
+            cin >> ID >> AT >> BT;
         }
         
         return {ID, AT, BT, PR, QL};
     }
 
+    vector<int> SetProcesses() {
+        return {};
+    }
+
 public:
     vector<int> Run(int choice) {
-        
-        return SetProcesses();
+        int n;
+        cout << "Enter the no of Processes: ";
+        return SetProcesses(n);
     }
 };
