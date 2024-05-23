@@ -5,6 +5,8 @@
 #include <iomanip>
 #include <vector>
 
+using namespace std;
+
 class FCFS {
 private:
     struct table {
@@ -16,14 +18,14 @@ private:
             : num(_num), AT(_AT), BT(_BT), CT(0), TAT(0), WT(0), used(_used) {}
     };
 
-    std::vector<table> Input(int n);
-    void GanttChart(std::vector<table>& Process, int n);
-    void PrintTable(std::vector<table>& Process, int n);
-    void PrintAverage(std::vector<table>& Process, int n);
+    vector<table> Input(int n);
+    void GanttChart(vector<table>& Process, int n);
+    void PrintTable(vector<table>& Process, int n);
+    void PrintAverage(vector<table>& Process, int n);
 
 public:
     void execute();
-    void ConcurrentExecute(std::vector<table>& Process);
+    void ConcurrentExecute(vector<table>& Process);
 };
 
 #endif
