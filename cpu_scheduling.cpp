@@ -64,7 +64,7 @@ private:
             cout << "\nEnter a choice number: ";
             getline(cin, choice);
             if (choice == "help") {
-                cout << "Help!";    //add help here
+                cout << "Help!";
                 continue;
             } else {
                 choices = validator.InputArray(choice);
